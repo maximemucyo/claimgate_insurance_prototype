@@ -4,8 +4,7 @@ require_once '../../config/db.php';
 require_once '../../controllers/AdminController.php';
 
 // Check if user is logged in and is an admin
-if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] != 1) {
-    header("Location: admin_login.php");
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     exit();
 }
 

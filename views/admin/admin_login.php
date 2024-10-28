@@ -1,11 +1,9 @@
 <?php
-session_start();
-require_once '../../config/db.php';
-require_once '../../controllers/AuthController.php';
-
-$auth = new AuthController($pdo);
+require '../../config/db.php';
+require '../../controllers/AuthController.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $auth = new AuthController($pdo);
     $auth->login();
 }
 ?>

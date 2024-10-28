@@ -65,7 +65,8 @@ class AuthController {
                 // Set session variables
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
-                $_SESSION['isAdmin'] = ($user['id'] == 1); // Assuming admin ID is 1
+                $_SESSION['isAdmin'] = ($user['id'] == 1); 
+                $_SESSION['role'] = $user['role']; 
 
                 // Redirect to the dashboard (index.php)
                 header("Location: ../views/index.php");

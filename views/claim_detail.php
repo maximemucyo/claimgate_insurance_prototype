@@ -50,22 +50,21 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 }
 
                 .navbar {
-                    /* background-color: #007bff; */
-                    /* Blue background */
+                   
                 }
 
                 .navbar-brand {
                     font-weight: bold;
-                    /* Bold logo text */
+
                     font-size: 1.5rem;
-                    /* Larger font size */
+
                 }
 
                 .nav-link {
                     color: white !important;
-                    /* White text for links */
+
                     transition: color 0.3s;
-                    /* Smooth color transition */
+
                 }
 
                 .nav-link:hover {

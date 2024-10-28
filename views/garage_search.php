@@ -65,6 +65,15 @@ $garages = $controller->getApprovedGarages($search);
         .submit-btn:hover {
             background-color: #218838; /* Darker green on hover */
         }
+        .footerr {
+            text-align: center;
+            padding: 20px;
+            background-color: #343a40;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
 
     </style>
 </head>
@@ -132,7 +141,7 @@ $garages = $controller->getApprovedGarages($search);
             <?php endif; ?>
         </div>
 
-        <footer class=" text-white text-center py-3">
+        <footer class="footerr">
             <p>&copy; 2024 ClaimGate</p>
         </footer>
 

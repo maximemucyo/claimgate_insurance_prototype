@@ -28,34 +28,34 @@ if (!$claim) {
 
         }
         .navbar {
-            /* background-color: #343a40; Dark Grey navbar */
+
         }
 
         .navbar-brand {
-            font-weight: bold; /* Bold logo text */
-            font-size: 1.5rem; /* Larger font size */
-            color: white !important; /* White color for brand */
+            font-weight: bold; /
+            font-size: 1.5rem;
+            color: white !important;
         }
 
         .nav-link {
-            color: white !important; /* White text for links */
-            transition: color 0.3s; /* Smooth color transition */
+            color: white !important;
+            transition: color 0.3s;
         }
 
         .nav-link:hover {
-            color: #ffc107 !important; /* Yellow on hover */
+            color: #ffc107 !important;
         }
 
         .header-title {
             text-align: left;
             margin-top: 3px;
             margin-bottom: 10px;
-            color: #343a40; /* Darker color for contrast */
+            color: #343a40; /
         }
 
         .submit-btn {
-            background-color: #28a745; /* Green background for button */
-            color: white; /* White text */
+            background-color: #28a745; 
+            color: white;
             padding: 12px 25px;
             border: none;
             border-radius: 5px;
@@ -72,10 +72,10 @@ if (!$claim) {
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">ClaimGate</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span> <!-- Hamburger icon -->
+                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto"> <!-- Aligns menu items to the right -->
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="index.php">Home</a>
                         </li>

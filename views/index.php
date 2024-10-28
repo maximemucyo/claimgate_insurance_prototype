@@ -92,15 +92,15 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         .table th, .table td {
-            vertical-align: middle; /* Center-align cell content */
+            vertical-align: middle;
         }
 
         .table-dark {
-            background-color: #343a40; /* Dark table background */
+            background-color: #343a40;
         }
 
         .text-warning {
-            color: #ffc107 !important; /* Yellow color for warnings */
+            color: #ffc107 !important;
         }
     </style>
 </head>
@@ -111,10 +111,10 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">ClaimGate</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span> <!-- Hamburger icon -->
+                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto"> <!-- Aligns menu items to the right -->
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="index.php">Home</a>
                         </li>
@@ -142,7 +142,7 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <h2 class="">Your Claims</h2>
 
         </div>
-        <!-- Button for submitting a new claim -->
+        >
         <button type="button" class="submit-btn">
             <a href="submit_claim.php" style="color: white; text-decoration: none;">Submit New Claim</a>
         </button>

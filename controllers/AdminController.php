@@ -16,6 +16,13 @@ class AdminController {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+     // Method to fetch all assessors for the admin dashboard
+     public function getAllAssesors() {
+        $stmt = $this->pdo->prepare('SELECT * FROM users WHERE role="assessor"');
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     // Method to get a specific claim by ID
     public function getClaimById($claimId) {
         $stmt = $this->pdo->prepare('SELECT * FROM claims WHERE id = :id');

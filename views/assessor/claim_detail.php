@@ -223,8 +223,8 @@ $assessors = $adminController->getAllAssesors();
                                             <div class="card-header d-flex justify-content-between ">      
                                                     <h2 class="mt-auto mb-auto">Claim Details (ID: <?php echo htmlspecialchars($claim['id']); ?>)</h2>
                                                 <div class="card-toolbar">
-                                                    <button class="btn btn-light-warning" data-bs-toggle="modal" data-bs-target="#kt_modal_users_search">
-                                                    Assign
+                                                    <button class="btn btn-light-warning">
+													<a href="report.php?id=<?php echo $claim['id']; ?>">Create Report</a>
                                                     </button>
                                                 </div>
                                             </div>
@@ -277,10 +277,7 @@ $assessors = $adminController->getAllAssesors();
                                             </div>
                                 
                                             <div class="card-footer justify-content-end align-items-end">
-                                                <form method="POST" style="all: unset; display: flex; gap: 10px;" class="align-self-end">
-                                                    <button class="btn btn-success" type="submit" name="action" value="approve">Approve Claim</button>
-                                                    <button class="btn btn-danger" type="submit" name="action" value="reject">Reject Claim</button>
-                                                </form>
+                                              
                                             </div>
                                         </div>
 										

@@ -203,6 +203,9 @@ $assessors = $adminController->getAllAssesors();
                                                 <!--begin::Item-->
 												<li class="breadcrumb-item text-gray-700">Claim</li>
 												<!--end::Item-->
+                                                <!--begin::Item-->
+												<li class="breadcrumb-item text-gray-700">report</li>
+												<!--end::Item-->
 											</ul>
 											<!--end::Breadcrumb-->
 										</div>
@@ -221,47 +224,28 @@ $assessors = $adminController->getAllAssesors();
 									<div class="row gx-5 gx-xl-10">
                                         <div class="card">
                                             <div class="card-header d-flex justify-content-between ">      
-                                                    <h2 class="mt-auto mb-auto">Claim Details (ID: <?php echo htmlspecialchars($claim['id']); ?>)</h2>
+                                                    <h2 class="mt-auto mb-auto">Claim Report (ID: <?php echo htmlspecialchars($claim['id']); ?>)</h2>
                                                 <div class="card-toolbar">
                                                     <button class="btn btn-light-warning" data-bs-toggle="modal" data-bs-target="#kt_modal_users_search">
-                                                    Assign
+                                                    SUBMIT
                                                     </button>
                                                 </div>
                                             </div>
                                         
                                             <div class="card-body">
-                                            <div class="card border-0">
-                                                <p><strong>Policyholder Name:</strong> <?php echo htmlspecialchars($claim['policyholder_name']); ?></p>
-                                                <p><strong>Incident Type:</strong> <?php echo htmlspecialchars($claim['incident_type']); ?></p>
-                                                <p><strong>Description:</strong> <?php echo htmlspecialchars($claim['description']); ?></p>
-                                                <p><strong>Status:</strong> <?php echo htmlspecialchars($claim['status']); ?></p>
-                                            </div>          
-                                            <div class="card border-0 mt-10">
-                                                <h3 class="mb-5">Uploaded Documents</h3>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <a href="<?php echo htmlspecialchars($claim['insurance_certificate']); ?>" target="_blank">
-                                                            <i class="ki-solid ki-file fs-3x text-gray-400 me-n1 text-center"></i>
-                                                            <div>Insurance Certificate</div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col">
-                                                        <a href="<?php echo htmlspecialchars($claim['driving_license']); ?>" target="_blank">
-                                                            <i class="ki-solid ki-file fs-3x text-gray-400 me-n1 text-center"></i>
-                                                            <div>Driving License</div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col">
-                                                        <a href="<?php echo htmlspecialchars($claim['log_book']); ?>" target="_blank">
-                                                            <i class="ki-solid ki-file fs-3x text-gray-400 me-n1 text-center"></i>
-                                                            <div>Log Book</div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col">
-                                                        <a href="<?php echo htmlspecialchars($claim['police_report']); ?>" target="_blank">
-                                                            <i class="ki-solid ki-file fs-3x text-gray-400 me-n1 text-center"></i>
-                                                            <div>Police Report</div>
-                                                        </a>
+												<form style="all:unset">
+													<div>
+														<textarea class="text-start text-muted" >
+															write details of your assessment here
+														</textarea>
+													</div>
+													<div>
+													<input type="file"/>
+													</div>
+												</form>
+											
+											</div>
+                                            
                                             </div>
                                             <?php if ($claim['damage_estimate']): ?>
                                                 <div class="col">
@@ -277,10 +261,7 @@ $assessors = $adminController->getAllAssesors();
                                             </div>
                                 
                                             <div class="card-footer justify-content-end align-items-end">
-                                                <form method="POST" style="all: unset; display: flex; gap: 10px;" class="align-self-end">
-                                                    <button class="btn btn-success" type="submit" name="action" value="approve">Approve Claim</button>
-                                                    <button class="btn btn-danger" type="submit" name="action" value="reject">Reject Claim</button>
-                                                </form>
+                                               
                                             </div>
                                         </div>
 										

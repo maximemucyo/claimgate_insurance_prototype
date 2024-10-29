@@ -142,7 +142,7 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <h2 class="">Your Claims</h2>
 
         </div>
-        >
+        
         <button type="button" class="submit-btn">
             <a href="submit_claim.php" style="color: white; text-decoration: none;">Submit New Claim</a>
         </button>

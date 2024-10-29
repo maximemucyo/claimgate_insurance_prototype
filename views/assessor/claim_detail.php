@@ -3,10 +3,10 @@ session_start();
 require_once '../../config/db.php';
 require_once '../../controllers/AdminController.php';
 
-// Check if user is logged in and is an admin
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    exit();
-}
+// // Check if user is logged in and is an admin
+// if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+//     exit();
+// }
 
 $adminController = new AdminController($pdo);
 
@@ -129,6 +129,17 @@ $assessors = $adminController->getAllAssesors();
 								<!--end::Menu wrapper-->
 							</div>
 							<!--end::User menu-->
+							<div class="app-navbar-item ms-3 ms-lg-4 me-lg-2">
+								<a class="nav-link" href="../../controllers/AuthController.php?action=logout">
+								<i class="ki-duotone ki-exit-right fs-2x rotate-180">
+									<span class="path1"></span>
+									<span class="path2"></span>
+								</i>
+								<div>
+								Logout
+								</div>
+								</a>
+							</div>
 							<!--begin::Header menu toggle-->
 							<div class="app-navbar-item ms-3 ms-lg-4 ms-n2 me-3 d-flex d-lg-none">
 								<div class="btn btn-icon btn-custom btn-color-gray-600 btn-active-color-primary w-35px h-35px w-md-40px h-md-40px" id="kt_app_aside_mobile_toggle">

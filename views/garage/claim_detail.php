@@ -3,10 +3,11 @@ session_start();
 require_once '../../config/db.php';
 require_once '../../controllers/AdminController.php';
 
-// Check if user is logged in and is an admin
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    exit();
-}
+// // Check if user is logged in and is an admin
+// if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'garage') {
+//     exit();
+// }
+
 
 $adminController = new AdminController($pdo);
 
@@ -129,6 +130,17 @@ $assessors = $adminController->getAllAssesors();
 								<!--end::Menu wrapper-->
 							</div>
 							<!--end::User menu-->
+							<div class="app-navbar-item ms-3 ms-lg-4 me-lg-2">
+								<a class="nav-link" href="../../controllers/AuthController.php?action=logout">
+								<i class="ki-duotone ki-exit-right fs-2x rotate-180">
+									<span class="path1"></span>
+									<span class="path2"></span>
+								</i>
+								<div>
+								Logout
+								</div>
+								</a>
+							</div>
 							<!--begin::Header menu toggle-->
 							<div class="app-navbar-item ms-3 ms-lg-4 ms-n2 me-3 d-flex d-lg-none">
 								<div class="btn btn-icon btn-custom btn-color-gray-600 btn-active-color-primary w-35px h-35px w-md-40px h-md-40px" id="kt_app_aside_mobile_toggle">
@@ -223,7 +235,7 @@ $assessors = $adminController->getAllAssesors();
                                             <div class="card-header d-flex justify-content-between ">      
                                                     <h2 class="mt-auto mb-auto">Claim Details (ID: <?php echo htmlspecialchars($claim['id']); ?>)</h2>
                                                 <div class="card-toolbar">
-												<button class="btn btn-light-primary " id="<?php echo $claim['id']; ?>">Bid</button>
+												<button class="btn btn-light-primary " id="<?php echo $claim['id']; ?>" data-bs-toggle="modal" data-bs-target="#kt_modal_users_search">Bid</button>
                                                 </div>
                                             </div>
                                         
@@ -309,106 +321,15 @@ $assessors = $adminController->getAllAssesors();
 					<div class="modal-body scroll-y mx-5 mx-xl-18 pt-0 pb-15">
 						<!--begin::Content-->
 						<div class="text-center mb-13">
-							<h1 class="mb-3">Search Users</h1>
-							<div class="text-muted fw-semibold fs-5">Assign assessors to assess this claim</div>
+							<h1 class="mb-3">Bid Amount</h1>
+							<div class="text-muted fw-semibold fs-5">Enter amount you'd like to bid</div>
 						</div>
 						<!--end::Content-->
-						<!--begin::Search-->
-						<div id="kt_modal_users_search_handler" data-kt-search-keypress="true" data-kt-search-min-length="2" data-kt-search-enter="enter" data-kt-search-layout="inline">
-							<!--begin::Form-->
-							<form data-kt-search-element="form" class="w-100 position-relative mb-5" autocomplete="off">
-								<!--begin::Hidden input(Added to disable form autocomplete)-->
-								<input type="hidden" />
-								<!--end::Hidden input-->
-								<!--begin::Icon-->
-								<i class="ki-duotone ki-magnifier fs-2 fs-lg-1 text-gray-500 position-absolute top-50 ms-5 translate-middle-y">
-									<span class="path1"></span>
-									<span class="path2"></span>
-								</i>
-								<!--end::Icon-->
-								<!--begin::Input-->
-								<input type="text" class="form-control form-control-lg form-control-solid px-15" name="search" value="" placeholder="Search by username, full name or email..." data-kt-search-element="input" />
-								<!--end::Input-->
-								<!--begin::Spinner-->
-								<span class="position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-5" data-kt-search-element="spinner">
-									<span class="spinner-border h-15px w-15px align-middle text-muted"></span>
-								</span>
-								<!--end::Spinner-->
-								<!--begin::Reset-->
-								<span class="btn btn-flush btn-active-color-primary position-absolute top-50 end-0 translate-middle-y lh-0 me-5 d-none" data-kt-search-element="clear">
-									<i class="ki-duotone ki-cross fs-2 fs-lg-1 me-0">
-										<span class="path1"></span>
-										<span class="path2"></span>
-									</i>
-								</span>
-								<!--end::Reset-->
-							</form>
-							<!--end::Form-->
-							<!--begin::Wrapper-->
-							<div class="py-5">
-                                <?php if (empty($assessors)): ?>
-								<!--begin::Empty-->
-								<div data-kt-search-element="empty" class="text-center">
-									<!--begin::Message-->
-									<div class="fw-semibold py-10">
-										<div class="text-gray-600 fs-3 mb-2">No users found</div>
-										<div class="text-muted fs-6">Try to search by username, full name or email...</div>
-									</div>
-									<!--end::Message-->
-									<!--begin::Illustration-->
-									<div class="text-center px-5">
-										<img src="assets/media/illustrations/sketchy-1/1.png" alt="" class="w-100 h-200px h-sm-325px" />
-									</div>
-									<!--end::Illustration-->
-								</div>
-								<!--end::Empty-->
-                                <?php else: ?>
-                                    <!--begin::Results(add d-none to below element to hide the users list by default)-->
-								<div data-kt-search-element="results" class="">
-									<!--begin::Users-->
-									<div class="mh-375px scroll-y me-n7 pe-7">
-                                    <?php foreach ($assessors as $assessor): ?>
-										<!--begin::User-->
-										<div class="rounded d-flex flex-stack bg-active-lighten p-4" data-user-id="0">
-											<!--begin::Details-->
-											<div class="d-flex align-items-center">
-												<!--begin::Checkbox-->
-												<label class="form-check form-check-custom form-check-solid me-5">
-													<input class="form-check-input" type="checkbox" name="users" data-kt-check="true" data-kt-check-target="[data-user-id='0']" value="0" />
-												</label>
-												<!--end::Checkbox-->
-												<!--begin::Avatar-->
-												<div class="symbol symbol-35px symbol-circle">
-													<img alt="Pic" src="../../assets/media/avatars/blank.png" />
-												</div>
-												<!--end::Avatar-->
-												<!--begin::Details-->
-												<div class="ms-5">
-													<a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary mb-2"><?php echo htmlspecialchars($assessor['username']); ?></a>
-													<div class="fw-semibold text-muted"><?php echo htmlspecialchars($assessor['email']); ?></div>
-												</div>
-												<!--end::Details-->
-											</div>
-											<!--end::Details-->
-										</div>
-										<!--end::User-->
-                                        <?php endforeach; ?>
-									</div>
-									<!--end::Users-->
-                                    <?php endif; ?>
-                                   
-									<!--begin::Actions-->
-									<div class="d-flex flex-center mt-15">
-										<button type="reset" id="kt_modal_users_search_reset" data-bs-dismiss="modal" class="btn btn-active-light me-3">Cancel</button>
-										<button type="submit" id="kt_modal_assessor_search_submit" class="btn btn-primary">Assign</button>
-									</div>
-									<!--end::Actions-->
-								</div>
-								<!--end::Results-->
-							</div>
-							<!--end::Wrapper-->
-						</div>
-						<!--end::Search-->
+						<form>
+							<input placeholder="Enter bid amount"/>
+							<button class="btn btn-light-success">Submit</button>
+						</form>
+
 					</div>
 					<!--end::Modal body-->
 				</div>

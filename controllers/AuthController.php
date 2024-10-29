@@ -29,15 +29,15 @@ class AuthController {
 
             // Insert new user into the database
             $stmt = $this->pdo->prepare("
-                INSERT INTO users (username, email, password, role)  // Use role in the insert statement
-                VALUES (:username, :email, :password, :role)
-            ");
-            $stmt->execute([
-                'username' => $username,
-                'email' => $email,
-                'password' => $password,
-                'role' => $role 
-            ]);
+            INSERT INTO users (username, email, password, role) 
+            VALUES (:username, :email, :password, :role)
+        ");
+        $stmt->execute([
+            'username' => $username,
+            'email' => $email,
+            'password' => $password,
+            'role' => $role 
+        ]);
 
             // Get the ID of the newly inserted user
             $userId = $this->pdo->lastInsertId();
@@ -47,8 +47,18 @@ class AuthController {
             $_SESSION['username'] = $username;
             $_SESSION['role'] = $role;  // Store role in session
 
-            // Redirect to the dashboard (index.php) after successful registration
-            header("Location: ../views/index.php");
+            
+                // Redirect based on role
+                if ($role === 'garage') {
+                    header("Location: ../views/garage"); 
+                } elseif($role === 'admin'){
+                    header("Location: ../views/admin"); 
+                }  elseif($role === 'assessor'){
+                    header("Location: ../views/assessor"); 
+                } 
+                else{
+                    header("Location: ../views/index.php");
+                }
             exit();
         }
     }
@@ -77,7 +87,10 @@ class AuthController {
                     header("Location: ../views/garage"); 
                 } elseif($user['role'] === 'admin'){
                     header("Location: ../views/admin"); 
-                } else{
+                }  elseif($user['role'] === 'assessor'){
+                    header("Location: ../views/assessor"); 
+                } 
+                else{
                     header("Location: ../views/index.php");
                 }
                 exit();

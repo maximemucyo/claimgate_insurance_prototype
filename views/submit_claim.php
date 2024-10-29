@@ -136,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </header>
 
 
-    <div class="container mt-5">
+    <div class="container mt-0">
 
         <h2 class="mb-4 text-center">Submit a Claim</h2>
 
@@ -149,7 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="card-header">
                     <h4 class="mb-3">Personal Information</h4>
                 </div>
-                <div class="row g-3 mb-4">
+                <div class="row g-3 mb-4 p-5 p-5">
                     <div class="col-md-8">
                         <label for="policyholder_name" class="form-label">Your Name</label>
                         <input type="text" id="policyholder_name" name="policyholder_name" class="form-control"
@@ -167,7 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="card-header">
                     <h4 class="mb-3">Incident Details</h4>
                 </div>
-                <div class="row g-3 mb-4">
+                <div class="row g-3 mb-4 p-5">
                     <div class="col-12">
                         <label for="description" class="form-label">Description</label>
                         <textarea id="description" name="description" class="form-control" rows="4" required></textarea>
@@ -189,7 +189,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="card-header">
                     <h4 class="mb-3">Document Uploads</h4>
                 </div>
-                <div class="row g-3 mb-4">
+                <div class="row g-3 mb-4 p-5">
                     <div class="col-md-6">
                         <label for="insurance_certificate" class="form-label">Insurance Certificate</label>
                         <input type="file" id="insurance_certificate" name="insurance_certificate" class="form-control"

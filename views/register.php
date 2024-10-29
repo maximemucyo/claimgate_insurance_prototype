@@ -19,6 +19,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .navbar {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* background-color: #ffffff; */
+            padding: 10px 20px;
+        }
+
+        .navbar a {
+            color: #333333;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+
+            margin-right: 15px;
+            /* Add space between links */
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: black !important;
+        }
+
+        .nav-link {
+            color: black !important;
+            transition: color 0.3s;
+        }
+    </style>
 </head>
 
 <body>
@@ -42,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="container vh-100 d-flex justify-content-center align-items-center">
         <div class="card p-4 shadow-lg border-0" style="max-width: 30rem; width: 100%;">
             <div class="card-body">
-                <h2 class="text-center mb-4">Create Your Account</h2>
+                <h2 class="text-center mb-4 text-dark">Create Your Account</h2>
                 <p class="text-center text-muted">Join ClaimGate and manage your claims easily!</p>
 
                 <form method="POST" class="mt-4">
@@ -69,12 +97,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
 
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                        <button type="submit" class="btn btn-primary btn-lg text-dark">Register</button>
                     </div>
                 </form>
 
                 <p class="text-center mt-3">
-                    <a href="login.php" class="text-primary">Already have an account? Login here</a>
+                    <a href="login.php" class="text-dark">Already have an account? Login here</a>
                 </p>
             </div>
         </div>

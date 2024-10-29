@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         .submit-btn {
-            background-color: #28a745;
+            background-color: #3ba8f5;
             /* Green background for button */
             color: white;
             /* White text */
@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         .submit-btn:hover {
-            background-color: #218838;
+            background-color: #3ba8f5;
             /* Darker green on hover */
         }
 
@@ -220,7 +220,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <!-- Submit Button -->
             <div class="text-center">
-                <button type="submit" class="btn btn-primary mt-3 px-4">Submit Claim</button>
+                <button type="submit" class="submit-btn text-dark">Submit Claim</button>
             </div>
 
         </form>

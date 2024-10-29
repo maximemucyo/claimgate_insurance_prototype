@@ -74,8 +74,10 @@ class AuthController {
 
                 // Redirect based on role
                 if ($user['role'] === 'garage') {
-                    header("Location: ../views/garage.php"); 
-                } else {
+                    header("Location: ../views/garage"); 
+                } elseif($user['role'] === 'admin'){
+                    header("Location: ../views/admin"); 
+                } else{
                     header("Location: ../views/index.php");
                 }
                 exit();

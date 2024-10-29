@@ -149,7 +149,7 @@ $claims = $adminController->getAllClaims();
 											<ul class="breadcrumb breadcrumb-separatorless fw-semibold mb-6">
 												<!--begin::Item-->
 												<li class="breadcrumb-item text-gray-700 fw-bold lh-1">
-													<a href="claim_detail.php" class="text-gray-500">
+													<a href="index.php" class="text-gray-500">
 														<i class="ki-duotone ki-home fs-3 text-gray-400 me-n1"></i>
 													</a>
 												</li>

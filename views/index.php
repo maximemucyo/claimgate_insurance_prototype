@@ -24,39 +24,56 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
         /* Custom Styles */
         body {
             font-family: 'Nunito', sans-serif;
-            background-color: #f2f2f2; /* Light background for better contrast */
+            background-color: #f2f2f2;
+            /* Light background for better contrast */
             /* background-image:  url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg') ; */
         }
 
         .navbar {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* background-color: #ffffff; */
+            padding: 10px 20px;
+        }
 
+        .navbar a {
+            color: #333333;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+
+            margin-right: 15px;
+            /* Add space between links */
         }
 
         .navbar-brand {
             font-weight: bold;
             font-size: 1.5rem;
-            color: white !important;
+            color: black !important;
         }
 
         .nav-link {
-            color: white !important;
+            color: black !important;
             transition: color 0.3s;
         }
 
         .nav-link:hover {
-            color: #ffc107 !important; Yellow on hover
+            color: #ffc107 !important;
+            Yellow on hover
         }
 
         .header-title {
             text-align: left;
             margin-top: 3px;
             margin-bottom: 10px;
-            color: #343a40; /* Darker color for contrast */
+            color: #343a40;
+            /* Darker color for contrast */
         }
 
         .submit-btn {
-            background-color: #EEF6FF; /* Green background for button */
-            color: #151617; /* White text */
+            background-color: #EEF6FF;
+            /* Green background for button */
+            color: #151617;
+            /* White text */
             padding: 12px 25px;
             border: none;
             border-radius: 5px;
@@ -66,7 +83,8 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         .submit-btn:hover {
-            background-color: #1c71c7; /* Darker green on hover */
+            background-color: #1c71c7;
+            /* Darker green on hover */
             color: #151617;
         }
 
@@ -92,7 +110,8 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
             width: 100%;
         }
 
-        .table th, .table td {
+        .table th,
+        .table td {
             vertical-align: middle;
         }
 
@@ -111,7 +130,8 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">ClaimGate</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -139,8 +159,8 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="container" style="padding: 5px;">
         <div>
-        <h1 class="header-title">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
-        <h2 class="">Your Claims</h2>
+            <h1 class="header-title">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
+            <h2 class="">Your Claims</h2>
 
         </div>
 
@@ -173,13 +193,16 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             <td><?php echo htmlspecialchars($claim['status']); ?></td>
                                                             <td><?php echo htmlspecialchars($claim['date_submitted']); ?></td>
                                                             <td>
-                                                                <a class="btn btn-link text-warning" href="claim_detail.php?id=<?php echo $claim['id']; ?>">View Details</a>
+                                                                <a class="btn btn-link text-warning"
+                                                                    href="claim_detail.php?id=<?php echo $claim['id']; ?>">View
+                                                                    Details</a>
                                                             </td>
                                                         </tr>
                                                     <?php endforeach; ?>
                                                 </table>
                                             <?php else: ?>
-                                                <p class="text-light">No claims found. <a class="text-warning" href="submit_claim.php">Submit a new claim</a>.</p>
+                                                <p class="text-light">No claims found. <a class="text-warning"
+                                                        href="submit_claim.php">Submit a new claim</a>.</p>
                                             <?php endif; ?>
                                         </div>
                                     </div>
@@ -198,4 +221,5 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

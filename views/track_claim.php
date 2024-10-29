@@ -28,19 +28,32 @@ if (!$claim) {
 
         }
         .navbar {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* background-color: #ffffff; */
+            padding: 10px 20px;
+        }
 
+        .navbar a {
+            color: #333333;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+
+            margin-right: 15px;
+            /* Add space between links */
         }
 
         .navbar-brand {
-            font-weight: bold; /
+            font-weight: bold;
             font-size: 1.5rem;
-            color: white !important;
+            color: black !important;
         }
 
         .nav-link {
-            color: white !important;
+            color: black !important;
             transition: color 0.3s;
         }
+
 
         .nav-link:hover {
             color: #ffc107 !important;

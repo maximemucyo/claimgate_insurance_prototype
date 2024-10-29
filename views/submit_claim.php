@@ -28,27 +28,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         .navbar {
-            /* background-color: #343a40; Dark Grey navbar */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* background-color: #ffffff; */
+            padding: 10px 20px;
+        }
+
+        .navbar a {
+            color: #333333;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+
+            margin-right: 15px;
+            /* Add space between links */
         }
 
         .navbar-brand {
             font-weight: bold;
-            /* Bold logo text */
             font-size: 1.5rem;
-            /* Larger font size */
-            color: white !important;
-            /* White color for brand */
+            color: black !important;
         }
 
         .nav-link {
-            color: white !important;
-            /* White text for links */
+            color: black !important;
             transition: color 0.3s;
-            /* Smooth color transition */
         }
 
         .nav-link:hover {
-            color: #ffc107 !important;
+            color: #3187c4 !important;
             /* Yellow on hover */
         }
 

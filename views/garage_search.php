@@ -26,19 +26,33 @@ $garages = $controller->getApprovedGarages($search);
             font-family: 'Nunito', sans-serif;
         }
         .navbar {
-            /* background-color: #343a40; Dark Grey navbar */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* background-color: #ffffff; */
+            padding: 10px 20px;
+        }
+
+        .navbar a {
+            color: #333333;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+
+            margin-right: 15px;
+            /* Add space between links */
         }
 
         .navbar-brand {
-            font-weight: bold; /* Bold logo text */
-            font-size: 1.5rem; /* Larger font size */
-            color: white !important; /* White color for brand */
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: black !important;
         }
 
         .nav-link {
-            color: white !important; /* White text for links */
-            transition: color 0.3s; /* Smooth color transition */
+            color: black !important;
+            transition: color 0.3s;
         }
+
+
 
         .nav-link:hover {
             color: #ffc107 !important; /* Yellow on hover */
@@ -52,7 +66,7 @@ $garages = $controller->getApprovedGarages($search);
         }
 
         .submit-btn {
-            background-color: #1c71c7; /* Green background for button */
+            background-color: #3187c4; /* Green background for button */
             color: white; /* White text */
             padding: 12px 25px;
             border: none;
@@ -108,6 +122,7 @@ $garages = $controller->getApprovedGarages($search);
             </div>
         </nav>
     </header>
+
 
         <div class="container my-5">
             <h1 class="text-center">Find an Approved Garage</h1>

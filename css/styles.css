@@ -1,8 +1,8 @@
 /* Basic Styles for ClaimGate - Updated with Blue Color Scheme and Black Text */
 :root {
-    --primary-color: #343a40; /* Blue */
+    --primary-color: #f8f9fa; /* Blue */
     --secondary-color: #f8f9fa; /* Light Gray Background */
-    --accent-color: #1c71c7; /* Green - adjusted for contrast */
+    --accent-color: #28a745; /* Green - adjusted for contrast */
     --text-color: #000; /* Black text color */
     --border-radius: 5px; /* Consistent border radius */
     --table-bg-color: #f2f2f2; /* Light gray table background */

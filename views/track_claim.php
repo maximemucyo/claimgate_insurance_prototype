@@ -54,7 +54,7 @@ if (!$claim) {
         }
 
         .submit-btn {
-            background-color: #28a745; 
+            background-color: #28a745;
             color: white;
             padding: 12px 25px;
             border: none;
@@ -62,6 +62,15 @@ if (!$claim) {
             cursor: pointer;
             margin-bottom: 20px;
             transition: background-color 0.3s;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: black;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
 
     </style>
@@ -115,7 +124,7 @@ if (!$claim) {
         </div>
     </div>
 
-    <footer class="bg-white text-black py-3 mt-5 text-center">
+    <footer class="footer">
         <div class="container">
             <p class="mb-0">&copy; 2024 ClaimGate</p>
         </div>
@@ -126,3 +135,4 @@ if (!$claim) {
         crossorigin="anonymous"></script>
 </body>
 </html>
+

@@ -27,7 +27,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             <style>
                 body {
                     font-family: 'Nunito', sans-serif;
-                    background-color: #f8f9fa;
+                    /* background-color: #f8f9fa; */
                 }
 
                 .card-header {
@@ -49,9 +49,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     vertical-align: middle;
                 }
 
-                .navbar {
-                   
-                }
+                .navbar {}
 
                 .navbar-brand {
                     font-weight: bold;
@@ -70,6 +68,16 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 .nav-link:hover {
                     color: #ffc107 !important;
                     /* Yellow on hover */
+                }
+
+                .footer {
+                    text-align: center;
+                    padding: 20px;
+                    background-color: #f2f2f2;
+                    color: black;
+                    position: relative;
+                    bottom: 0;
+                    width: 100%;
                 }
             </style>
         </head>
@@ -243,7 +251,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 </div>
             </div>
 
-            <footer class=" text-white py-4 text-center">
+            <footer class=" footer">
                 <p class="mb-0">&copy; 2024 ClaimGate</p>
             </footer>
 

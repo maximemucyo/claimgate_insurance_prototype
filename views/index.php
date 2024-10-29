@@ -24,23 +24,23 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
         /* Custom Styles */
         body {
             font-family: 'Nunito', sans-serif;
-            background-color: #151617; /* Light background for better contrast */
-            background-image:  url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg') ;
+            background-color: #f2f2f2; /* Light background for better contrast */
+            /* background-image:  url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg') ; */
         }
 
         .navbar {
-            /* background-color: #343a40; Dark Grey navbar */
+            /
         }
 
         .navbar-brand {
-            font-weight: bold; /* Bold logo text */
-            font-size: 1.5rem; /* Larger font size */
-            color: white !important; /* White color for brand */
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: white !important;
         }
 
         .nav-link {
-            color: white !important; /* White text for links */
-            transition: color 0.3s; /* Smooth color transition */
+            color: white !important;
+            transition: color 0.3s;
         }
 
         .nav-link:hover {
@@ -70,22 +70,22 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         .bg-image {
-            background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');
+            /* background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg'); */
             background-size: cover;
             background-position: center;
-            height: 100vh; /* Full height for section */
+            height: 100vh;
         }
 
         .card {
-            border: none; /* Remove border */
-            border-radius: 10px; /* Rounded corners */
+            border: none;
+            border-radius: 10px;
         }
 
         .footer {
             text-align: center;
             padding: 20px;
-            background-color: #343a40;
-            color: white;
+            background-color: #f2f2f2;
+            color: black;
             position: relative;
             bottom: 0;
             width: 100%;
@@ -149,7 +149,7 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <section class="intro">
             <div class="bg-image">
-                <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, .5);">
+                <div class="mask d-flex align-items-center h-auto" style="background-color: ;">
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-12">

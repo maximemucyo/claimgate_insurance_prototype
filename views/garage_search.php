@@ -68,8 +68,8 @@ $garages = $controller->getApprovedGarages($search);
         .footerr {
             text-align: center;
             padding: 20px;
-            background-color: #343a40;
-            color: white;
+            background-color: #f8f9fa;
+            color: black;
             position: relative;
             bottom: 0;
             width: 100%;

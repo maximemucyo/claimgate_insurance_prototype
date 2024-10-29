@@ -160,7 +160,7 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="container" style="padding: 5px;">
         <div>
             <h1 class="header-title">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
-            <h2 class="">Your Claims</h2>
+            <h2 class="header-title">Your Claims</h2>
 
         </div>
 

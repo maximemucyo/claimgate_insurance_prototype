@@ -143,12 +143,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <h4 class="mb-3">Personal Information</h4>
                 </div>
                 <div class="row g-3 mb-4">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <label for="policyholder_name" class="form-label">Your Name</label>
                         <input type="text" id="policyholder_name" name="policyholder_name" class="form-control"
                             required>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <label for="incident_type" class="form-label">Incident Type</label>
                         <input type="text" id="incident_type" name="incident_type" class="form-control" required>
                     </div>
@@ -178,42 +178,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <!-- Section 3: Document Uploads -->
-             <div class= card>
-             <div class="card-header">
-            <h4 class="mb-3">Document Uploads</h4>
-            </div>
-            <div class="row g-3 mb-4">
-                <div class="col-md-6">
-                    <label for="insurance_certificate" class="form-label">Insurance Certificate</label>
-                    <input type="file" id="insurance_certificate" name="insurance_certificate" class="form-control"
-                        required>
+            <div class=card>
+                <div class="card-header">
+                    <h4 class="mb-3">Document Uploads</h4>
                 </div>
-                <div class="col-md-6">
-                    <label for="driving_license" class="form-label">Driving License</label>
-                    <input type="file" id="driving_license" name="driving_license" class="form-control" required>
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <label for="insurance_certificate" class="form-label">Insurance Certificate</label>
+                        <input type="file" id="insurance_certificate" name="insurance_certificate" class="form-control"
+                            required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="driving_license" class="form-label">Driving License</label>
+                        <input type="file" id="driving_license" name="driving_license" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="log_book" class="form-label">Log Book</label>
+                        <input type="file" id="log_book" name="log_book" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="police_report" class="form-label">Police Report</label>
+                        <input type="file" id="police_report" name="police_report" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="damage_estimate" class="form-label">Damage Estimate (Optional)</label>
+                        <input type="file" id="damage_estimate" name="damage_estimate" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for="claim_file" class="form-label">Upload Supporting Files (e.g., Car Photos)</label>
+                        <input type="file" id="claim_file" name="claim_file" class="form-control" required>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <label for="log_book" class="form-label">Log Book</label>
-                    <input type="file" id="log_book" name="log_book" class="form-control" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="police_report" class="form-label">Police Report</label>
-                    <input type="file" id="police_report" name="police_report" class="form-control" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="damage_estimate" class="form-label">Damage Estimate (Optional)</label>
-                    <input type="file" id="damage_estimate" name="damage_estimate" class="form-control">
-                </div>
-                <div class="col-12">
-                    <label for="claim_file" class="form-label">Upload Supporting Files (e.g., Car Photos)</label>
-                    <input type="file" id="claim_file" name="claim_file" class="form-control" required>
-                </div>
-            </div>
 
-            <!-- Submit Button -->
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary mt-3 px-4">Submit Claim</button>
-            </div>
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary mt-3 px-4">Submit Claim</button>
+                </div>
             </div>
         </form>
     </div>

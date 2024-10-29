@@ -67,8 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </header>
 
-    <div class="container vh-100 d-flex justify-content-center align-items-center">
-        <div class="card p-4 shadow-lg border-0" style="max-width: 30rem; width: 100%;">
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="card p-4 shadow-lg border-0" style="width: 100%;">
             <div class="card-body">
                 <h2 class="text-center mb-4 text-dark">Create Your Account</h2>
                 <p class="text-center text-muted">Join ClaimGate and manage your claims easily!</p>

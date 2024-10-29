@@ -138,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 effectively.</p>
 
             <!-- Section 1: Personal Information -->
-            <div class="card">
+            <div class="card shadow mb-4">
                 <div class="card-header">
                     <h4 class="mb-3">Personal Information</h4>
                 </div>
@@ -156,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <!-- Section 2: Incident Details -->
-            <div class="card">
+            <div class="card shadow mb-4">
                 <div class="card-header">
                     <h4 class="mb-3">Incident Details</h4>
                 </div>
@@ -178,7 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <!-- Section 3: Document Uploads -->
-            <div class=card>
+            <div class="card shadow mb-4">
                 <div class="card-header">
                     <h4 class="mb-3">Document Uploads</h4>
                 </div>
@@ -209,12 +209,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="file" id="claim_file" name="claim_file" class="form-control" required>
                     </div>
                 </div>
-
-                <!-- Submit Button -->
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary mt-3 px-4">Submit Claim</button>
-                </div>
             </div>
+
+            <!-- Submit Button -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary mt-3 px-4">Submit Claim</button>
+            </div>
+
         </form>
     </div>
 

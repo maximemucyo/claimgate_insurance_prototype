@@ -30,6 +30,33 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     /* background-color: #f8f9fa; */
                 }
 
+                .navbar {
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    /* background-color: #ffffff; */
+                    padding: 10px 20px;
+                }
+
+                .navbar a {
+                    color: #333333;
+                    font-size: 16px;
+                    font-weight: bold;
+                    text-decoration: none;
+
+                    margin-right: 15px;
+                    /* Add space between links */
+                }
+
+                .navbar-brand {
+                    font-weight: bold;
+                    font-size: 1.5rem;
+                    color: black !important;
+                }
+
+                .nav-link {
+                    color: black !important;
+                    transition: color 0.3s;
+                }
+
                 .card-header {
                     background-color: #0f2942;
                     color: white;
@@ -59,7 +86,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 }
 
                 .nav-link {
-                    color: white !important;
+                    color: black !important;
 
                     transition: color 0.3s;
 
@@ -83,13 +110,13 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         </head>
 
         <body>
-            <header class=" text-black py-3">
+            <header>
                 <nav class="navbar navbar-expand-lg">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="#">ClaimGate</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
+                            <span class="navbar-toggler-icon"></span> <!-- Hamburger icon -->
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav ms-auto"> <!-- Aligns menu items to the right -->
@@ -112,8 +139,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                         </div>
                     </div>
                 </nav>
-
             </header>
+
 
             <div class="container my-5">
                 <h2 class="text-center mb-4">Claim Details for Claim #<?php echo htmlspecialchars($claim['id']); ?></h2>

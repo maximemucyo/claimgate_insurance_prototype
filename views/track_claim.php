@@ -120,7 +120,7 @@ if (!$claim) {
     </header>
 
     <div class="container mt-5">
-        <h2 class="mb-4 text-center">Track Claim Status</h2>
+        <h2 class="mb-4 text-center text-dark">Track Claim Status</h2>
         <div class="claim-timeline bg-white p-4 rounded shadow">
             <?php if (isset($claim['timeline']) && is_array($claim['timeline']) && count($claim['timeline']) > 0): ?>
                 <?php foreach ($claim['timeline'] as $event): ?>

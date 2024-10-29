@@ -25,6 +25,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             /* background-color: #151617; Light background for better contrast */
             /* background-image:  url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg') ; */
         }
+        .navbar {
+            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+            /* background-color: #ffffff; */
+            /* padding: 10px 20px; */
+        }
+
+        .navbar a {
+            color: #333333;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+
+            margin-right: 15px;
+            /* Add space between links */
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: black !important;
+        }
+
+        .nav-link {
+            color: black !important;
+            transition: color 0.3s;
+        }
 
     </style>
 </head>
@@ -49,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="container vh-100 d-flex justify-content-center align-items-center">
         <div class="card p-4 shadow-lg border-0" style="max-width: 28rem; width: 100%;">
             <div class="card-body">
-                <h2 class="text-center mb-4">Welcome Back!</h2>
+                <h2 class="text-center mb-4 text-dark">Welcome Back!</h2>
                 <p class="text-center text-muted">Login to your ClaimGate account</p>
                 <form method="POST" class="mt-4">
                     <div class="form-outline mb-4">

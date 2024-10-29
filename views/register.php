@@ -46,6 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p class="text-center text-muted">Join ClaimGate and manage your claims easily!</p>
 
                 <form method="POST" class="mt-4">
+                <div class="form-outline mb-3">
+                        <label for="username" class="form-label"> I am a:</label>
+                        <input type="text" id="username" name="username" class="form-control form-control-lg" required>
+                    </div>
                     <div class="form-outline mb-3">
                         <label for="username" class="form-label">Username:</label>
                         <input type="text" id="username" name="username" class="form-control form-control-lg" required>

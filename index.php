@@ -115,10 +115,10 @@
 							<div id="kt_app_content" class="app-content flex-column-fluid  bgi-size-contain bgi-no-repeat bgi-position-y-top bgi-position-x-end min-w-600px min-h-450px"
                             style="background-image: url('assets/media/cars/Designer.png');">
 								<!--begin::Content container-->
-								<div id="kt_app_content_container" class="app-container container-fluid">
+								<div id="kt_app_content_container" class="app-container container-fluid h-100 d-flex flex-column justify-content-center ">
 									<!--begin::Row-->
 									<div class="row gx-5 gx-xl-10">
-                                    <div class="card col-6 border-0 justify-content-start align-items-start bg-transparent text-black fw-bold p-15 mt-10">
+                                    <div class="card col-6 border-0 justify-content-start align-items-start bg-transparent text-black fw-bold ">
                                         <div class=" text-black fw-bolder fs-2"> ClaimGate is Your Number One trusted Insurance company<div/>
                                         <div class="fs-2 mb-10 ">
                                             Are you looking for an isurance company that meet all your car needs?

@@ -36,7 +36,7 @@
 			<!--begin::Page-->
 			<div class="app-page flex-column flex-column-fluid" id="kt_app_page">
 				<!--begin::Header-->
-				<div id="kt_app_header" class="app-header d-flex flex-column flex-stack bg-white">
+				<div id="kt_app_header" class="app-header d-flex flex-column flex-stack bg-white border shadow">
 					<!--begin::Header main-->
 					<div class="d-flex align-items-center flex-stack flex-grow-1">
 						<div class="app-header-logo d-flex align-items-center flex-stack px-lg-11 mb-2" id="kt_app_header_logo">
@@ -69,14 +69,14 @@
                             <div class="app-navbar-item ms-3 ms-lg-4 me-lg-2" id="kt_header_user_menu_toggle">
 								<!--begin::Menu wrapper-->
 								<div class="cursor-pointer symbol symbol-30px symbol-lg-40px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                                    <a class="nav-link" href="index.php">About</a>
+                                    <a class="nav-link" href="views/index.php">About</a>
 								</div>
 								<!--end::Menu wrapper-->
 							</div>
                             <div class="app-navbar-item ms-3 ms-lg-4 me-lg-2" id="kt_header_user_menu_toggle">
 								<!--begin::Menu wrapper-->
 								<div class="cursor-pointer symbol symbol-30px symbol-lg-40px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                                    <a class="nav-link" href="index.php">Register/Login</a>
+                                    <a class="nav-link" href="views/index.php">Register/Login</a>
 								</div>
 								<!--end::Menu wrapper-->
 							</div>
@@ -112,21 +112,21 @@
 						<!--begin::Content wrapper-->
 						<div class="d-flex flex-column flex-column-fluid">
 							<!--begin::Content-->
-							<div id="kt_app_content" class="app-content flex-column-fluid  bgi-size-cover bgi-no-repeat bgi-position-y-bottom bgi-position-x-center min-h-450px"
-                            style="background-image: url('assets/media/cars/car-4.jpg');">
+							<div id="kt_app_content" class="app-content flex-column-fluid  bgi-size-contain bgi-no-repeat bgi-position-y-top bgi-position-x-end min-w-600px min-h-450px"
+                            style="background-image: url('assets/media/cars/Designer.png');">
 								<!--begin::Content container-->
 								<div id="kt_app_content_container" class="app-container container-fluid">
 									<!--begin::Row-->
 									<div class="row gx-5 gx-xl-10">
-                                    <div class="card col-6 border-0 justify-content-start align-items-start bg-transparent text-white fw-bold">
-                                        <h1 class="mb-10 mt-20 text-white fw-bolder">Your Number One trusted Insurance company</h1>
+                                    <div class="card col-6 border-0 justify-content-start align-items-start bg-transparent text-black fw-bold p-15 mt-10">
+                                        <div class=" text-black fw-bolder fs-2"> ClaimGate is Your Number One trusted Insurance company<div/>
                                         <div class="fs-2 mb-10 ">
                                             Are you looking for an isurance company that meet all your car needs?
                                             Well look no further, ClaimGate is your best chance at concurring the challenges that comes with owning a car.
                                         </div>
                                         <div class="d-flex">
                                             <button class="btn btn-light-warning">
-                                            <a class="nav-link" href="index.php">GET STARTED</a>
+                                            <a class="nav-link" href="views/index.php">GET STARTED</a>
                                             </button>
 
                                         </div>
@@ -141,7 +141,7 @@
 						</div>
 						<!--end::Content wrapper-->
 						<!--begin::Footer-->
-						<div id="kt_app_footer" class="app-footer align-items-center justify-content-center justify-content-md-between flex-column flex-md-row py-3">
+						<div id="kt_app_footer" class="app-footer align-items-center justify-content-center justify-content-md-between flex-column flex-md-row py-3 ms-15">
 							<!--begin::Copyright-->
 							<div class="text-dark order-2 order-md-1">
 								<span class="text-muted fw-semibold me-1">2024&copy;</span>

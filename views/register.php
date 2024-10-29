@@ -47,9 +47,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <form method="POST" class="mt-4">
                 <div class="form-outline mb-3">
-                        <label for="username" class="form-label"> I am a:</label>
-                        <input type="text" id="username" name="username" class="form-control form-control-lg" required>
-                    </div>
+                    <label for="userType" class="form-label">I am registering as:</label>
+                    <select id="userType" name="userType" class="form-select form-select-lg" required>
+                        <option value="driver">A Driver</option>
+                        <option value="garage">A Garage Owner</option>
+                    </select>
+                </div>
                     <div class="form-outline mb-3">
                         <label for="username" class="form-label">Username:</label>
                         <input type="text" id="username" name="username" class="form-control form-control-lg" required>

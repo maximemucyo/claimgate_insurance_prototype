@@ -51,7 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="card-body">
                 <h2 class="text-center mb-4">Welcome Back!</h2>
                 <p class="text-center text-muted">Login to your ClaimGate account</p>
-
                 <form method="POST" class="mt-4">
                     <div class="form-outline mb-4">
                         <label for="username" class="form-label">Username:</label>

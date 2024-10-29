@@ -13,6 +13,8 @@ class AuthController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username = $_POST['username'];
             $email = $_POST['email'];
+            $userType = $_POST['userType']; // Capture userType
+            
             $password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Hash the password
 
             // Check if username or email already exists
@@ -27,13 +29,14 @@ class AuthController {
 
             // Insert new user into the database
             $stmt = $this->pdo->prepare("
-                INSERT INTO users (username, email, password) 
-                VALUES (:username, :email, :password)
+                INSERT INTO users (username, email, password, userType)  // Include userType in the insert statement
+                VALUES (:username, :email, :password, :userType)
             ");
             $stmt->execute([
                 'username' => $username,
                 'email' => $email,
-                'password' => $password
+                'password' => $password,
+                'userType' => $userType  // Pass userType to the execute method
             ]);
 
             // Get the ID of the newly inserted user
@@ -42,6 +45,7 @@ class AuthController {
             // Set session variables
             $_SESSION['user_id'] = $userId;
             $_SESSION['username'] = $username;
+            $_SESSION['role'] = $userType;  // Optionally store userType in session
 
             // Redirect to the dashboard (index.php) after successful registration
             header("Location: ../views/index.php");

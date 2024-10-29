@@ -125,7 +125,7 @@
                                             Well look no further, ClaimGate is your best chance at concurring the challenges that comes with owning a car.
                                         </div>
                                         <div class="d-flex">
-                                            <button class="btn btn-light-warning">
+                                            <button class="btn btn-light-primary">
                                             <a class="nav-link" href="views/index.php">GET STARTED</a>
                                             </button>
 

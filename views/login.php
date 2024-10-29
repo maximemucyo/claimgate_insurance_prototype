@@ -72,8 +72,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </header>
 
-    <div class="container vh-100 d-flex justify-content-center align-items-center">
-        <div class="card p-4 shadow-lg border-0" style="max-width: 28rem; width: 100%;">
+    <div class="container  d-flex justify-content-center align-items-center">
+        <div class="card p-4 shadow-lg border-0 w-100" style=" width: 100%;">
             <div class="card-body">
                 <h2 class="text-center mb-4 text-dark">Welcome Back!</h2>
                 <p class="text-center text-muted">Login to your ClaimGate account</p>
@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
 
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                        <button type="submit" class="btn btn-primary btn-lg text-dark">Login</button>
                     </div>
                 </form>
 

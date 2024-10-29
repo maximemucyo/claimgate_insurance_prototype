@@ -52,7 +52,7 @@ $garages = $controller->getApprovedGarages($search);
         }
 
         .submit-btn {
-            background-color: #28a745; /* Green background for button */
+            background-color: #1c71c7; /* Green background for button */
             color: white; /* White text */
             padding: 12px 25px;
             border: none;
@@ -117,7 +117,7 @@ $garages = $controller->getApprovedGarages($search);
                 <div class="input-group">
                     <input type="text" name="search" class="form-control" placeholder="Search garages..."
                         value="<?php echo htmlspecialchars($search); ?>">
-                    <button class="btn btn-primary" type="submit">Search</button>
+                    <button class="submit-btn" type="submit">Search</button>
                 </div>
             </form>
 

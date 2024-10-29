@@ -2,7 +2,7 @@
 :root {
     --primary-color: #343a40; /* Blue */
     --secondary-color: #f8f9fa; /* Light Gray Background */
-    --accent-color: #28a745; /* Green - adjusted for contrast */
+    --accent-color: #1c71c7; /* Green - adjusted for contrast */
     --text-color: #000; /* Black text color */
     --border-radius: 5px; /* Consistent border radius */
     --table-bg-color: #f2f2f2; /* Light gray table background */
@@ -304,7 +304,7 @@ footer {
     text-align: center;
     padding: 20px 0; /* Increased padding */
     margin-top: auto; /* Added to make footer stay at bottom */
-    
+
 }
 
 /* bootstrap */

@@ -29,7 +29,7 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         .navbar {
-            /
+
         }
 
         .navbar-brand {
@@ -44,7 +44,7 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         .nav-link:hover {
-            color: #ffc107 !important; /* Yellow on hover */
+            color: #ffc107 !important; Yellow on hover
         }
 
         .header-title {
@@ -55,8 +55,8 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         .submit-btn {
-            background-color: #28a745; /* Green background for button */
-            color: white; /* White text */
+            background-color: #EEF6FF; /* Green background for button */
+            color: #151617; /* White text */
             padding: 12px 25px;
             border: none;
             border-radius: 5px;
@@ -66,7 +66,8 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         .submit-btn:hover {
-            background-color: #218838; /* Darker green on hover */
+            background-color: #1c71c7; /* Darker green on hover */
+            color: #151617;
         }
 
         .bg-image {
@@ -142,7 +143,7 @@ $claims = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <h2 class="">Your Claims</h2>
 
         </div>
-        
+
         <button type="button" class="submit-btn">
             <a href="submit_claim.php" style="color: white; text-decoration: none;">Submit New Claim</a>
         </button>

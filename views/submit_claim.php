@@ -178,7 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <!-- Section 3: Document Uploads -->
-            <div class="card shadow mb-4">
+            <div class="card ">
                 <div class="card-header">
                     <h4 class="mb-3">Document Uploads</h4>
                 </div>

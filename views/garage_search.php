@@ -125,7 +125,7 @@ $garages = $controller->getApprovedGarages($search);
 
 
         <div class="container my-5">
-            <h1 class="text-center">Find an Approved Garage</h1>
+            <h1 class="text-center text-dark">Find an Approved Garage</h1>
 
             <!-- Search form -->
             <form method="GET" class="mb-4">

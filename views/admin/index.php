@@ -201,13 +201,13 @@ $claims = $adminController->getAllClaims();
 											<h2>All Claims</h2>
 											<table border="1">
 												<thead>
-													<tr>
-														<th>ID</th>
-														<th>Policyholder</th>
-														<th>Incident Type</th>
-														<th>Status</th>
-														<th>Date Submitted</th>
-														<th>Actions</th>
+													<tr >
+														<th class="text-black">ID</th>
+														<th class="text-black">Policyholder</th>
+														<th class="text-black">Incident Type</th>
+														<th class="text-black">Status</th>
+														<th class="text-black">Date Submitted</th>
+														<th class="text-black">Actions</th>
 													</tr>
 												</thead>
 												<tbody>

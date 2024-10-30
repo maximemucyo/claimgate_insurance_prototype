@@ -29,6 +29,9 @@ if ($claimId) {
 // Handle Approve/Reject actions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'];
+	if($action=="assign_assessor"){
+		
+	}
     $adminController->updateClaimStatus($claimId, $action === 'approve' ? 'Approved' : 'Rejected');
 }
 
@@ -409,42 +412,44 @@ $assessors = $adminController->getAllAssesors();
 								<div data-kt-search-element="results" class="">
 									<!--begin::Users-->
 									<div class="mh-375px scroll-y me-n7 pe-7">
-                                    <?php foreach ($assessors as $assessor): ?>
-										<!--begin::User-->
-										<div class="rounded d-flex flex-stack bg-active-lighten p-4" data-user-id="0">
-											<!--begin::Details-->
-											<div class="d-flex align-items-center">
-												<!--begin::Checkbox-->
-												<label class="form-check form-check-custom form-check-solid me-5">
-													<input class="form-check-input" type="checkbox" name="users" data-kt-check="true" data-kt-check-target="[data-user-id='0']" value="0" />
-												</label>
-												<!--end::Checkbox-->
-												<!--begin::Avatar-->
-												<div class="symbol symbol-35px symbol-circle">
-													<img alt="Pic" src="../../assets/media/avatars/blank.png" />
-												</div>
-												<!--end::Avatar-->
+									<form id="assignForm" method="POST">
+										<?php foreach ($assessors as $assessor): ?>
+											<!--begin::User-->
+											<div class="rounded d-flex flex-stack bg-active-lighten p-4" data-user-id="<?php echo htmlspecialchars($assessor['id']); ?>">
 												<!--begin::Details-->
-												<div class="ms-5">
-													<a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary mb-2"><?php echo htmlspecialchars($assessor['username']); ?></a>
-													<div class="fw-semibold text-muted"><?php echo htmlspecialchars($assessor['email']); ?></div>
+												<div class="d-flex align-items-center">
+													<!--begin::Radio Button-->
+													<label class="form-check form-check-custom form-check-solid me-5">
+														<input class="form-check-input" type="radio" name="users" value="<?php echo htmlspecialchars($assessor['id']); ?>" />
+													</label>
+													<!--end::Radio Button-->
+													<!--begin::Avatar-->
+													<div class="symbol symbol-35px symbol-circle">
+														<img alt="Pic" src="../../assets/media/avatars/blank.png" />
+													</div>
+													<!--end::Avatar-->
+													<!--begin::Details-->
+													<div class="ms-5">
+														<a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary mb-2"><?php echo htmlspecialchars($assessor['username']); ?></a>
+														<div class="fw-semibold text-muted"><?php echo htmlspecialchars($assessor['email']); ?></div>
+													</div>
+													<!--end::Details-->
 												</div>
 												<!--end::Details-->
 											</div>
-											<!--end::Details-->
+											<!--end::User-->
+										<?php endforeach; ?>                          
 										</div>
-										<!--end::User-->
-                                        <?php endforeach; ?>
-									</div>
-									<!--end::Users-->
-                                    <?php endif; ?>
-                                   
-									<!--begin::Actions-->
-									<div class="d-flex flex-center mt-15">
-										<button type="reset" id="kt_modal_users_search_reset" data-bs-dismiss="modal" class="btn btn-active-light me-3">Cancel</button>
-										<button type="submit" id="kt_modal_assessor_search_submit" class="btn btn-primary">Assign</button>
-									</div>
-									<!--end::Actions-->
+										<!--end::Users-->
+										<?php endif; ?>
+									
+										<!--begin::Actions-->
+										<div class="d-flex flex-center mt-15">
+											<button type="reset" id="kt_modal_users_search_reset" data-bs-dismiss="modal" class="btn btn-active-light me-3">Cancel</button>
+											<button type="submit" id="kt_modal_assessor_search_submit" class="btn btn-primary" name="assign" action="assign_assessor">Assign</button>
+										</div>
+										<!--end::Actions-->
+									</form>
 								</div>
 								<!--end::Results-->
 							</div>
@@ -490,29 +495,28 @@ $assessors = $adminController->getAllAssesors();
 		<script src="../../assets/js/custom/utilities/modals/create-app.js"></script>
 		<script src="../../assets/js/custom/utilities/modals/users-search.js"></script>
         <script>
-        $(document).ready(function() {
-            $('#kt_modal_assessor_search_submit').click(function() {
-                var userId = $(this).val();
-                alert("submitted");
+			$(document).ready(function() {
+				$("#assignForm").on("submit", function(event) {
+					event.preventDefault(); 
 
-                // if (userId) {
-                //     $.ajax({
-                //         type: "POST",
-                //         url: "your-server-endpoint.php",
-                //         data: { id: userId },
-                //         success: function(response) {
-                //             alert("Assigned User: " + response.username);
-                //         },
-                //         error: function(xhr, status, error) {
-                //             console.error("AJAX Error: " + status + error);
-                //             alert("An error occurred while assigning the user.");
-                //         }
-                //     });
-                // } else {
-                //     alert("Please select a user.");
-                // }
-            });
-        });
+					var formData = $(this).serialize(); 
+
+					$.ajax({
+						type: "POST",
+						url: "", 
+						data: formData,
+						success: function(response) {
+							console.log(response);
+							// // Update result div with response
+							// $("#result").html(response);
+						},
+						error: function(xhr, status, error) {
+							// // Handle error response
+							// $("#result").html("<p>An error occurred: " + error + "</p>");
+						}
+					});
+				});
+			});
         </script>
 		<!--end::Custom Javascript-->
 		<!--end::Javascript-->

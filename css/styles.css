@@ -1,6 +1,6 @@
 /* Basic Styles for ClaimGate - Updated with Blue Color Scheme and Black Text */
 :root {
-    --primary-color: #f8f9fa; /* Blue */
+
     --secondary-color: #f8f9fa; /* Light Gray Background */
     --accent-color: #3ba8f5; /* Green - adjusted for contrast */
     --text-color: #000; /* Black text color */

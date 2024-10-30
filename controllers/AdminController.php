@@ -55,5 +55,23 @@ class AdminController {
             'description' => $description
         ]);
     }
+
+    // Method to assign assessor to claim
+    public function assignAssessor($claimId, $assessor_id) {
+        $stmt = $this->pdo->prepare('UPDATE claims SET assessor_id = :assessor_id WHERE id = :id');
+        $stmt->execute([':assessor_id' => $assessor_id, ':id' => $claimId]);
+
+        // Add timeline entry for assessor assignment
+        $this->addTimelineEvent($claimId, date('Y-m-d H:i:s'), "Claim assigned to $assessor_id by Admin");
+
+        $response = [
+            'status' => 'success',
+            'message' => 'Assessor assigned successfully.',
+            'claimId' => $claimId,
+            'assessorId' => $assessor_id,
+        ];
+    
+        return json_encode($response);
+    }
 }
 ?>

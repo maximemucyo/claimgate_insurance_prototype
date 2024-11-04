@@ -5,11 +5,7 @@ require '../controllers/ClaimController.php';
 
 $controller = new ClaimController($pdo);
 $claim = $controller->getClaim($_SESSION['user_id']);
-
-if (!$claim) {
-    echo "<p class='text-center text-danger'>No claim found.</p>";
-    exit;
-}
+$claims = $controller->getClaimsByUser($_SESSION['user_id']);
 ?>
 
 <!DOCTYPE html>
@@ -122,18 +118,41 @@ if (!$claim) {
     <div class="container mt-5">
         <h2 class="mb-4 text-center text-dark">Track Claim Status</h2>
         <div class="claim-timeline bg-white p-4 rounded shadow">
-            <?php if (isset($claim['timeline']) && is_array($claim['timeline']) && count($claim['timeline']) > 0): ?>
-                <?php foreach ($claim['timeline'] as $event): ?>
-                    <div class="timeline-event border-start ps-3 mb-3 <?php echo $event['completed'] ? 'border-success' : 'border-warning'; ?>">
-                        <p class="mb-1"><strong><?php echo htmlspecialchars($event['date']); ?></strong></p>
-                        <p class="<?php echo $event['completed'] ? 'text-success' : 'text-warning'; ?>">
-                            <?php echo htmlspecialchars($event['description']); ?>
-                        </p>
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p class="text-muted text-center">No timeline events yet.</p>
-            <?php endif; ?>
+            <?php
+                if (!$claims) {
+                    echo "<p class='text-center text-danger'>No claim found.</p>";
+                    exit;
+                }
+            ?>
+            	<div class="row gx-5 gx-xl-10">
+										<div class="container">
+											<table border="1">
+												<thead>
+													<tr >
+														<th class="text-black">ID</th>
+														<th class="text-black">Incident Type</th>
+														<th class="text-black">Status</th>
+														<th class="text-black">Date Submitted</th>
+														<th class="text-black">Actions</th>
+													</tr>
+												</thead>
+												<tbody>
+													<?php foreach ($claims as $claim): ?>
+														<tr>
+															<td><?php echo htmlspecialchars($claim['id']); ?></td>
+															<td><?php echo htmlspecialchars($claim['incident_type']); ?></td>
+															<td><?php echo htmlspecialchars($claim['status']); ?></td>
+															<td><?php echo htmlspecialchars($claim['date_submitted']); ?></td>
+															<td>
+																<a href="claim_detail.php?id=<?php echo $claim['id']; ?>">View Details</a>
+															</td>
+														</tr>
+													<?php endforeach; ?>
+												</tbody>
+											</table>
+										</div>
+										
+									</div>                      	
         </div>
     </div>
 

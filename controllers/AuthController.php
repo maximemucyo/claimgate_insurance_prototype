@@ -56,6 +56,9 @@ class AuthController {
                 }  elseif($role === 'assessor'){
                     header("Location: ../views/assessor"); 
                 } 
+                elseif($role['role'] === 'super'){
+                    header("Location: ../views/super"); 
+                }  
                 else{
                     header("Location: ../views/index.php");
                 }
@@ -89,7 +92,10 @@ class AuthController {
                     header("Location: ../views/admin"); 
                 }  elseif($user['role'] === 'assessor'){
                     header("Location: ../views/assessor"); 
-                } 
+                }
+                elseif($user['role'] === 'super'){
+                    header("Location: ../views/super"); 
+                }  
                 else{
                     header("Location: ../views/index.php");
                 }

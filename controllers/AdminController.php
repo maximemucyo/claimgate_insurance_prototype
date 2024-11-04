@@ -9,6 +9,13 @@ class AdminController {
         $this->pdo = $pdo;
     }
 
+    public function getAllUsers() {
+        $stmt = $this->pdo->prepare('SELECT * FROM users');
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
     // Method to fetch all claims for the admin dashboard
     public function getAllClaims() {
         $stmt = $this->pdo->prepare('SELECT * FROM claims');
@@ -39,7 +46,7 @@ class AdminController {
         $this->addTimelineEvent($claimId, date('Y-m-d H:i:s'), "Claim $status by Admin");
 
         // Redirect back to the admin dashboard
-        header('Location: /ClaimGate/views/admin/admin_dashboard.php');
+        header('Location: /ClaimGate/views/admin/index.php');
         exit;
     }
 
@@ -58,20 +65,34 @@ class AdminController {
 
     // Method to assign assessor to claim
     public function assignAssessor($claimId, $assessor_id) {
-        $stmt = $this->pdo->prepare('UPDATE claims SET assessor_id = :assessor_id WHERE id = :id');
-        $stmt->execute([':assessor_id' => $assessor_id, ':id' => $claimId]);
-
-        // Add timeline entry for assessor assignment
-        $this->addTimelineEvent($claimId, date('Y-m-d H:i:s'), "Claim assigned to $assessor_id by Admin");
-
-        $response = [
-            'status' => 'success',
-            'message' => 'Assessor assigned successfully.',
-            'claimId' => $claimId,
-            'assessorId' => $assessor_id,
-        ];
+        try {
+            $stmt = $this->pdo->prepare('UPDATE claims SET assessor_id = :assessor_id WHERE id = :id');
+            $stmt->execute([':assessor_id' => $assessor_id, ':id' => $claimId]);
     
-        return json_encode($response);
+            // Add timeline entry for assessor assignment
+            $this->addTimelineEvent($claimId, date('Y-m-d H:i:s'), "Claim assigned to $assessor_id by Admin");
+    
+            // $response = [
+            //     'status' => 'success',
+            //     'message' => 'Assessor assigned successfully.',
+            //     'claimId' => $claimId,
+            //     'assessorId' => $assessor_id,
+            // ];
+            
+            // return json_encode($response);
+            header('Location: /ClaimGate/views/admin/index.php');
+        } catch (PDOException $e) {
+
+            error_log($e->getMessage());
+    
+            $response = [
+                'status' => 'error',
+                'message' => 'Failed to assign assessor: ' . $e->getMessage(),
+            ];
+            
+            return json_encode($response);
+        }
     }
+    
 }
 ?>

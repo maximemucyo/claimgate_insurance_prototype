@@ -1,5 +1,5 @@
 <?php
-require_once '../middleware/auth.php';
+// require_once '../middleware/auth.php';
 
 class ClaimController {
     private $pdo;
@@ -159,5 +159,42 @@ class ClaimController {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+      // Method to fetch all claims for the admin dashboard
+      public function getClaimsByUser($userId) {
+        $stmt = $this->pdo->prepare("
+            SELECT * FROM claims WHERE user_id = :user_id
+        ");
+        $stmt->execute(['user_id' => $userId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function bidClaim($claimId, $userId, $amount) {
+        $stmt = $this->pdo->prepare("
+            INSERT INTO bids (claim_id, user_id, amount) VALUES (:claim_id, :user_id, :amount)
+        ");
+        $stmt->execute([
+            'claim_id' => $claimId,
+            'user_id' => $userId,
+            'amount' => $amount,
+        ]);
+    }
+
+    public function hasBidSubmitted($claimId, $userId) {
+        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM bids WHERE claim_id = :claim_id AND user_id = :user_id");
+        $stmt->execute([
+            'claim_id' => $claimId,
+            'user_id' => $userId,
+        ]);
+        $bidCount = $stmt->fetchColumn();
+        return $bidCount > 0;
+    }
+
+    public function getBidsByUser($userId) {
+        $stmt = $this->pdo->prepare("SELECT * FROM bids WHERE user_id = :user_id");
+        $stmt->execute(['user_id' => $userId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }
 ?>

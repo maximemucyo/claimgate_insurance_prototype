@@ -1,60 +1,23 @@
 <?php
 session_start();
 require_once '../../config/db.php';
-require_once '../../controllers/ClaimController.php';
 require_once '../../controllers/AdminController.php';
 
 // Check if user is logged in and is an admin
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'garage') { 
-    http_response_code(403);
-    exit('Access denied.');
-}
+// if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') { // Assuming admin ID is 1
+//     exit();
+// }
 
 $adminController = new AdminController($pdo);
-$user_id = $_SESSION['user_id'];
-
-// Get claim ID from URL
-$claimId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-
-if ($claimId) {
-    // Fetch claim details
-    $claim = $adminController->getClaimById($claimId);
-
-    if (!$claim) {
-        http_response_code(404);
-        error_log("Claim not found for ID: $claimId");
-        exit("Claim not found.");
-    }
-} else {
-    http_response_code(400);
-    exit("No claim ID provided.");
-}
-
-$controller = new ClaimController($pdo);
-$bidsubmitted = false;
-
-if ($controller->hasBidSubmitted($claimId, $user_id)) {
-    $bidsubmitted = true;
-    echo "You have already submitted a bid for this claim.";
-} else {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $amount = filter_input(INPUT_POST, 'amount', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-        
-        if ($controller->bidClaim($claimId, $user_id, $amount)) {
-            echo "Bid placed successfully.";
-        } else {
-            echo "Failed to place bid.";
-        }
-    }
-}
-
+$users = $adminController->getAllUsers();
 ?>
+
 <!DOCTYPE html>
 
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href=""/>
-		<title>Claim Gate</title>
+		<title>Car Insurance</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta property="og:locale" content="en_US" />
@@ -73,7 +36,7 @@ if ($controller->hasBidSubmitted($claimId, $user_id)) {
 		<link rel="stylesheet" href="../../css/styles.css">
 		<!--end::Global Stylesheets Bundle-->
 		<script>// Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }</script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
@@ -107,13 +70,20 @@ if ($controller->hasBidSubmitted($claimId, $user_id)) {
 						<!--begin::Navbar-->
 						<div class="app-navbar flex-grow-1 justify-content-end" id="kt_app_header_navbar">
 							<div class="app-navbar-item d-flex align-items-stretch flex-lg-grow-1 me-2 me-lg-0">
+							<div class="app-navbar-item ms-3 ms-lg-4 me-lg-2" id="kt_header_user_menu_toggle">
+								<!--begin::Menu wrapper-->
+								<div class="cursor-pointer symbol symbol-30px symbol-lg-40px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+								<a href="index.php">Claims</a>
+								</div>
+								<!--end::Menu wrapper-->
 							</div>
 							<div class="app-navbar-item ms-3 ms-lg-4 me-lg-2" id="kt_header_user_menu_toggle">
 								<!--begin::Menu wrapper-->
 								<div class="cursor-pointer symbol symbol-30px symbol-lg-40px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-									<a href="bids.php">Bids</a>
+									<a href="users.php">Users</a>
 								</div>
 								<!--end::Menu wrapper-->
+							</div>
 							</div>
 							<!--begin::User menu-->
 							<div class="app-navbar-item ms-3 ms-lg-4 me-lg-2" id="kt_header_user_menu_toggle">
@@ -143,6 +113,7 @@ if ($controller->hasBidSubmitted($claimId, $user_id)) {
 									<!--begin::Menu separator-->
 									<div class="separator my-2"></div>
 									<!--end::Menu separator-->
+									
 								</div>
 								<!--end::User account menu-->
 								<!--end::Menu wrapper-->
@@ -204,7 +175,7 @@ if ($controller->hasBidSubmitted($claimId, $user_id)) {
 											<ul class="breadcrumb breadcrumb-separatorless fw-semibold mb-6">
 												<!--begin::Item-->
 												<li class="breadcrumb-item text-gray-700 fw-bold lh-1">
-													<a href="index.php" class="text-gray-500">
+													<a href="claim_detail.php" class="text-gray-500">
 														<i class="ki-duotone ki-home fs-3 text-gray-400 me-n1"></i>
 													</a>
 												</li>
@@ -225,14 +196,6 @@ if ($controller->hasBidSubmitted($claimId, $user_id)) {
 												<!--begin::Item-->
 												<li class="breadcrumb-item text-gray-700">Claims</li>
 												<!--end::Item-->
-                                                <!--begin::Item-->
-												<li class="breadcrumb-item">
-													<i class="ki-duotone ki-right fs-4 text-gray-700 mx-n1"></i>
-												</li>
-												<!--end::Item-->
-                                                <!--begin::Item-->
-												<li class="breadcrumb-item text-gray-700">Claim</li>
-												<!--end::Item-->
 											</ul>
 											<!--end::Breadcrumb-->
 										</div>
@@ -249,47 +212,30 @@ if ($controller->hasBidSubmitted($claimId, $user_id)) {
 								<div id="kt_app_content_container" class="app-container container-fluid">
 									<!--begin::Row-->
 									<div class="row gx-5 gx-xl-10">
-                                        <div class="card">
-                                            <div class="card-header d-flex justify-content-between ">      
-                                                    <h2 class="mt-auto mb-auto">Claim Details (ID: <?php echo htmlspecialchars($claim['id']); ?>)</h2>
-                                                <div class="card-toolbar">
-												<div class="claim-status">
-													<?php if ($bidsubmitted==true): ?>
-														<button class="btn btn-light-success" disabled>
-															Bid Submitted
-														</button>
-													<?php else: ?>
-														<button class="btn btn-light-primary " id="<?php echo $claim['id']; ?>" data-bs-toggle="modal" data-bs-target="#kt_modal_users_search">Bid</button>
-													<?php endif; ?>
-												</div>
-                                                </div>
-                                            </div>
-                                        
-                                            <div class="card-body">
-                                            <div class="card border-0">
-                                                <p><strong>Incident Type:</strong> <?php echo htmlspecialchars($claim['incident_type']); ?></p>
-                                                <p><strong>Description:</strong> <?php echo htmlspecialchars($claim['description']); ?></p>
-                                                <p><strong>Status:</strong> <?php echo htmlspecialchars($claim['status']); ?></p>
-                                            </div>          
-                                           
-                                        
-                                            <?php if ($claim['damage_estimate']): ?>
-                                                <div class="col">
-                                                    <a href="<?php echo htmlspecialchars($claim['damage_estimate']); ?>" target="_blank">
-                                                        <i class="ki-solid ki-file fs-3x text-gray-400 me-n1 text-center"></i>
-                                                        <div>Damage Estimate</div>
-                                                    </a>
-                                                </div>
-                                            <?php endif; ?>
-                                        </div>
-                                               
-                                            </div>
-                                            </div>
-                                
-                                            <div class="card-footer justify-content-end align-items-end">
-                                              
-                                            </div>
-                                        </div>
+										<div class="container">
+											<h2>All Users</h2>
+                                            <table border="1">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-dark">Username</th>
+                                                        <th class="text-dark">Email</th>
+                                                        <th class="text-dark">Created At</th>
+                                                        <th class="text-dark">Role</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php foreach ($users as $user): ?>
+                                                        <tr>
+                                                            <td><?php echo htmlspecialchars($user['username']); ?></td>
+                                                            <td><?php echo htmlspecialchars($user['email']); ?></td>
+                                                            <td><?php echo htmlspecialchars($user['created_at']); ?></td>
+                                                            <td><?php echo htmlspecialchars($user['role']); ?></td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                </tbody>
+                                            </table>
+										
+										</div>
 										
 									</div>
 									<!--end::Row-->
@@ -325,46 +271,6 @@ if ($controller->hasBidSubmitted($claimId, $user_id)) {
 			</i>
 		</div>
 		<!--end::Scrolltop-->
-        <!--begin::Modal - Users Search-->
-		<div class="modal fade" id="kt_modal_users_search" tabindex="-1" aria-hidden="true">
-			<!--begin::Modal dialog-->
-			<div class="modal-dialog modal-dialog-centered mw-650px">
-				<!--begin::Modal content-->
-				<div class="modal-content">
-					<!--begin::Modal header-->
-					<div class="modal-header pb-0 border-0 justify-content-end">
-						<!--begin::Close-->
-						<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
-							<i class="ki-duotone ki-cross fs-1">
-								<span class="path1"></span>
-								<span class="path2"></span>
-							</i>
-						</div>
-						<!--end::Close-->
-					</div>
-					<!--begin::Modal header-->
-					<!--begin::Modal body-->
-					<div class="modal-body scroll-y mx-5 mx-xl-18 pt-0 pb-15">
-						<!--begin::Content-->
-						<div class="text-center mb-13">
-							<h1 class="mb-3">Bid Amount</h1>
-							<div class="text-muted fw-semibold fs-5">Enter amount you'd like to bid</div>
-						</div>
-						<!--end::Content-->
-						<form method="POST" >
-							<input placeholder="Enter bid amount" name="amount"/>
-							<button class="btn btn-light-success" type="submit">Submit</button>
-						</form>
-
-					</div>
-					<!--end::Modal body-->
-				</div>
-				<!--end::Modal content-->
-			</div>
-			<!--end::Modal dialog-->
-		</div>
-		<!--end::Modal - Users Search-->
-
 		<!--begin::Javascript-->
 		<script>var hostUrl = "../../assets/";</script>
 		<!--begin::Global Javascript Bundle(mandatory for all pages)-->
@@ -394,31 +300,6 @@ if ($controller->hasBidSubmitted($claimId, $user_id)) {
 		<script src="../../assets/js/custom/utilities/modals/create-account.js"></script>
 		<script src="../../assets/js/custom/utilities/modals/create-app.js"></script>
 		<script src="../../assets/js/custom/utilities/modals/users-search.js"></script>
-        <script>
-        $(document).ready(function() {
-            $('#kt_modal_assessor_search_submit').click(function() {
-                var userId = $(this).val();
-                alert("submitted");
-
-                // if (userId) {
-                //     $.ajax({
-                //         type: "POST",
-                //         url: "your-server-endpoint.php",
-                //         data: { id: userId },
-                //         success: function(response) {
-                //             alert("Assigned User: " + response.username);
-                //         },
-                //         error: function(xhr, status, error) {
-                //             console.error("AJAX Error: " + status + error);
-                //             alert("An error occurred while assigning the user.");
-                //         }
-                //     });
-                // } else {
-                //     alert("Please select a user.");
-                // }
-            });
-        });
-        </script>
 		<!--end::Custom Javascript-->
 		<!--end::Javascript-->
 	</body>

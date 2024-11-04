@@ -70,6 +70,13 @@ $claims = $adminController->getAllClaims();
 						<div class="app-navbar flex-grow-1 justify-content-end" id="kt_app_header_navbar">
 							<div class="app-navbar-item d-flex align-items-stretch flex-lg-grow-1 me-2 me-lg-0">
 							</div>
+							<div class="app-navbar-item ms-3 ms-lg-4 me-lg-2" id="kt_header_user_menu_toggle">
+								<!--begin::Menu wrapper-->
+								<div class="cursor-pointer symbol symbol-30px symbol-lg-40px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+									<a href="bids.php">Bids</a>
+								</div>
+								<!--end::Menu wrapper-->
+							</div>
 							<!--begin::User menu-->
 							<div class="app-navbar-item ms-3 ms-lg-4 me-lg-2" id="kt_header_user_menu_toggle">
 								<!--begin::Menu wrapper-->
@@ -160,7 +167,7 @@ $claims = $adminController->getAllClaims();
 											<ul class="breadcrumb breadcrumb-separatorless fw-semibold mb-6">
 												<!--begin::Item-->
 												<li class="breadcrumb-item text-gray-700 fw-bold lh-1">
-													<a href="claim_detail.php" class="text-gray-500">
+													<a href="index.php" class="text-gray-500">
 														<i class="ki-duotone ki-home fs-3 text-gray-400 me-n1"></i>
 													</a>
 												</li>
@@ -202,11 +209,11 @@ $claims = $adminController->getAllClaims();
 											<table border="1">
 												<thead>
 													<tr>
-														<th>ID</th>
-														<th>Incident Type</th>
-														<th>Status</th>
-														<th>Date Submitted</th>
-														<th>Actions</th>
+														<th class="text-dark">ID</th>
+														<th class="text-dark">Incident Type</th>
+														<th class="text-dark">Status</th>
+														<th class="text-dark">Date Submitted</th>
+														<th class="text-dark">Actions</th>
 													</tr>
 												</thead>
 												<tbody>

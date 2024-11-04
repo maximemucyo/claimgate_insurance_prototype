@@ -13,6 +13,8 @@ $adminController = new AdminController($pdo);
 // Get claim ID from URL
 $claimId = $_GET['id'] ?? null;
 
+$user_id = $_SESSION['user_id'];
+
 if ($claimId) {
     // Fetch claim details
     $claim = $adminController->getClaimById($claimId);
@@ -35,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 $adminController = new AdminController($pdo);
 $assessors = $adminController->getAllAssesors();
+
 
 ?>
 <!DOCTYPE html>

@@ -196,5 +196,15 @@ class ClaimController {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function submitReport($claimId, $assessor_id, $assessment_details) {
+        $stmt = $this->pdo->prepare("
+            INSERT INTO reports (claim_id,assessor_id, assessment_details) VALUES (:claim_id, :assessor_id, :assessment_details)
+        ");
+        $stmt->execute([
+            'claim_id' => $claimId,
+            'assessor_id' => $assessor_id,
+            'assessment_details' => $assessment_details,
+        ]);
+    }
 }
 ?>

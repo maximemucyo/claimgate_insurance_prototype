@@ -2,6 +2,7 @@
 session_start();
 require_once '../../config/db.php';
 require_once '../../controllers/AdminController.php';
+require_once '../../controllers/ClaimController.php';
 
 // // Check if user is logged in and is an admin
 // if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
@@ -26,15 +27,17 @@ if ($claimId) {
     exit();
 }
 
-// Handle Approve/Reject actions
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $action = $_POST['action'];
-    $adminController->updateClaimStatus($claimId, $action === 'approve' ? 'Approved' : 'Rejected');
-}
-
-
 $adminController = new AdminController($pdo);
 $assessors = $adminController->getAllAssesors();
+
+$controller = new ClaimController($pdo);
+$assessor_id= $_SESSION['user_id'];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {	
+	if ($controller->submitReport($claimId, $assessor_id, $_POST['assessment_details'])) {
+		echo "Report submitted successfully.";
+	}
+}
 
 ?>
 <!DOCTYPE html>
@@ -237,21 +240,21 @@ $assessors = $adminController->getAllAssesors();
                                             <div class="card-header d-flex justify-content-between ">      
                                                     <h2 class="mt-auto mb-auto">Claim Report (ID: <?php echo htmlspecialchars($claim['id']); ?>)</h2>
                                                 <div class="card-toolbar">
-                                                    <button class="btn btn-light-warning">
+                                                    <button class="btn btn-light-warning" id="reportSubmit">
                                                     SUBMIT
                                                     </button>
                                                 </div>
                                             </div>
                                         
                                             <div class="card-body">
-												<form style="all:unset">
+												<form style="all:unset" action="" method="POST" id="reportForm">
 													<div>
-														<textarea class="text-start text-muted" >
+														<textarea class="text-start text-muted" name="assessment_details" >
 															write details of your assessment here
 														</textarea>
 													</div>
 													<div>
-													<input type="file"/>
+													
 													</div>
 												</form>
 											
@@ -472,26 +475,9 @@ $assessors = $adminController->getAllAssesors();
 		<script src="../../assets/js/custom/utilities/modals/users-search.js"></script>
         <script>
         $(document).ready(function() {
-            $('#kt_modal_assessor_search_submit').click(function() {
-                var userId = $(this).val();
-                alert("submitted");
-
-                // if (userId) {
-                //     $.ajax({
-                //         type: "POST",
-                //         url: "your-server-endpoint.php",
-                //         data: { id: userId },
-                //         success: function(response) {
-                //             alert("Assigned User: " + response.username);
-                //         },
-                //         error: function(xhr, status, error) {
-                //             console.error("AJAX Error: " + status + error);
-                //             alert("An error occurred while assigning the user.");
-                //         }
-                //     });
-                // } else {
-                //     alert("Please select a user.");
-                // }
+            $('#reportSubmit').click(function() {
+            document.getElementById('reportForm').submit();
+			alert("Claim Submitted!")
             });
         });
         </script>
